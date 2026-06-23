@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+overflow:hidden;
+}
+
+.page{
+position:absolute;
+width:100%;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+transition:0.8s;
+}
+
+#page1{
+background:#87CEEB;
+}
+
+#page2{
+background:#ffd6ec;
+display:none;
+overflow:hidden;
+}
+
+button{
+padding:18px 45px;
+font-size:25px;
+border:none;
+border-radius:40px;
+background:white;
+color:#4b4b4b;
+cursor:pointer;
+box-shadow:0 10px 25px rgba(0,0,0,.2);
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.08);
+}
+
+h1{
+font-size:48px;
+color:#ff4081;
+text-align:center;
+margin-bottom:20px;
+}
+
+p{
+font-size:28px;
+text-align:center;
+color:#6d2f5b;
+}
+
+.confetti{
+position:absolute;
+width:10px;
+height:10px;
+top:-20px;
+animation:fall linear infinite;
+}
+
+@keyframes fall{
+0%{
+transform:translateY(-10vh) rotate(0deg);
+}
+100%{
+transform:translateY(110vh) rotate(720deg);
+}
+}
+
+.balloon{
+position:absolute;
+font-size:50px;
+animation:float 5s ease-in-out infinite;
+}
+
+@keyframes float{
+0%,100%{
+transform:translateY(0px);
+}
+50%{
+transform:translateY(-20px);
+}
+}
+
+.heart{
+position:absolute;
+font-size:30px;
+color:red;
+animation:rise 4s linear infinite;
+}
+
+@keyframes rise{
+0%{
+transform:translateY(100vh);
+opacity:1;
+}
+100%{
+transform:translateY(-20vh);
+opacity:0;
+}
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="page1" class="page">
+
+<button onclick="showBirthday()">
+Press Me 😉
+</button>
+
+</div>
+
+<div id="page2" class="page">
+
+<h1>🎉 Happy Birthday Habibi 🎂</h1>
+
+<p>
+Next year having <br>
+<strong>صلعون</strong> together ❤️👶
+</p>
+
+<div class="balloon" style="left:15%;top:15%;">🎈</div>
+<div class="balloon" style="left:80%;top:20%;animation-delay:1s;">🎈</div>
+<div class="balloon" style="left:30%;top:70%;animation-delay:2s;">🎈</div>
+
+</div>
+
+<script>
+
+function showBirthday(){
+
+document.getElementById("page1").style.display="none";
+document.getElementById("page2").style.display="flex";
+
+for(let i=0;i<180;i++){
+
+let c=document.createElement("div");
+c.className="confetti";
+
+c.style.left=Math.random()*100+"vw";
+c.style.backgroundColor=
+["#ff4d6d","#ffbe0b","#3a86ff","#8338ec","#06d6a0","#ffffff"][Math.floor(Math.random()*6)];
+
+c.style.animationDuration=(Math.random()*3+2)+"s";
+
+document.body.appendChild(c);
+
+}
+
+setInterval(createHeart,250);
+
+}
+
+function createHeart(){
+
+let h=document.createElement("div");
+
+h.className="heart";
+h.innerHTML="❤️";
+
+h.style.left=Math.random()*100+"vw";
+h.style.fontSize=(20+Math.random()*20)+"px";
+
+document.body.appendChild(h);
+
+setTimeout(()=>{
+h.remove();
+},4000);
+
+}
+
+</script>
+
+</body>
+</html>
